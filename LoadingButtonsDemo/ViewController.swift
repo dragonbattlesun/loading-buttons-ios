@@ -37,11 +37,11 @@ class ViewController: UIViewController {
         navbar = addNavigationBar(title: "Loading Buttons")
         if #available(iOS 13.0, *) {
             self.view.backgroundColor = .secondarySystemBackground
-            btnLine = LoadingButton(text: "Line", buttonStyle: .outline)
+            btnLine = LoadingButton(text: "Line", textColor: .black, bgColor: UIColor(red: 52/255.0, green: 120/255.0, blue: 246/255.0, alpha: 1.0), isShowMaterial: true)
             btnFill = LoadingButton(text: "Fill", buttonStyle: .fill)
         } else {
             self.view.backgroundColor = .white
-            btnLine = LoadingButton(text: "Line", textColor: .black, bgColor: .white)
+            btnLine = LoadingButton(text: "Line", textColor: .black, bgColor: UIColor(red: 52/255.0, green: 120/255.0, blue: 246/255.0, alpha: 1.0), isShowMaterial: true)
             btnLine.setCornerBorder(color: .black, cornerRadius: 12.0, borderWidth: 1.5)
             btnFill = LoadingButton(text: "Fill", textColor: .white, bgColor: .black)
         }

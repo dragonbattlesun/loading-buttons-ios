@@ -45,6 +45,9 @@
 		30E13A9722FE177600EDA5CC /* BallPulseIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3061E47422FC691500AFE29A /* BallPulseIndicator.swift */; };
 		6827696B247E27B500A1E225 /* LineSpinFadeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6827696A247E27B500A1E225 /* LineSpinFadeLoader.swift */; };
 		6827696C247E295D00A1E225 /* LineSpinFadeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6827696A247E27B500A1E225 /* LineSpinFadeLoader.swift */; };
+		8D1AF9172C8176F000F7369E /* LoadingButtonLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8443492C8172C400CD7EC6 /* LoadingButtonLayer.swift */; };
+		8D1AF9182C8176F400F7369E /* LoadingButtonLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8443492C8172C400CD7EC6 /* LoadingButtonLayer.swift */; };
+		8D84434A2C8172C400CD7EC6 /* LoadingButtonLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8443492C8172C400CD7EC6 /* LoadingButtonLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +111,7 @@
 		30E13A7922FE115F00EDA5CC /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		30E13A7B22FE152800EDA5CC /* IndicatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorType.swift; sourceTree = "<group>"; };
 		6827696A247E27B500A1E225 /* LineSpinFadeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSpinFadeLoader.swift; sourceTree = "<group>"; };
+		8D8443492C8172C400CD7EC6 /* LoadingButtonLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingButtonLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,7 @@
 		3061E46D22FC691500AFE29A /* Indicators */ = {
 			isa = PBXGroup;
 			children = (
+				8D8443492C8172C400CD7EC6 /* LoadingButtonLayer.swift */,
 				3061E48022FC691F00AFE29A /* MaterialLoadingIndicator.swift */,
 				3061E47F22FC691F00AFE29A /* IndicatorProtocol.swift */,
 				3061E46F22FC691500AFE29A /* NVActivityIndicatorShape.swift */,
@@ -354,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D84434A2C8172C400CD7EC6 /* LoadingButtonLayer.swift in Sources */,
 				3061E48322FC691F00AFE29A /* LoadingButton.swift in Sources */,
 				3061E47622FC691500AFE29A /* NVActivityIndicatorShape.swift in Sources */,
 				30C93B612301E8EF00D66F10 /* BallPulseSyncIndicator.swift in Sources */,
@@ -377,6 +383,7 @@
 				30E13A9122FE177600EDA5CC /* LineScaleIndicator.swift in Sources */,
 				30E13A8A22FE16D000EDA5CC /* Extensions.swift in Sources */,
 				30E13A8C22FE171400EDA5CC /* LoadingButton.swift in Sources */,
+				8D1AF9172C8176F000F7369E /* LoadingButtonLayer.swift in Sources */,
 				30E13A9522FE177600EDA5CC /* BallBeatIndicator.swift in Sources */,
 				30E13A9322FE177600EDA5CC /* LBIndicator.swift in Sources */,
 				30C93B642301FE3100D66F10 /* UsefulExtensions.swift in Sources */,
@@ -399,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D1AF9182C8176F400F7369E /* LoadingButtonLayer.swift in Sources */,
 				3061E4E122FC6AC200AFE29A /* LoadingButtonsDemoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,7 +574,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 588Y89GTAL;
+				DEVELOPMENT_TEAM = 8BBUKG34W2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -592,7 +600,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 588Y89GTAL;
+				DEVELOPMENT_TEAM = 8BBUKG34W2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -618,7 +626,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XM5XV26R5J;
+				DEVELOPMENT_TEAM = 8BBUKG34W2;
 				INFOPLIST_FILE = LoadingButtonsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -657,6 +665,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8BBUKG34W2;
 				INFOPLIST_FILE = LoadingButtonsDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -676,6 +685,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8BBUKG34W2;
 				INFOPLIST_FILE = LoadingButtonsDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

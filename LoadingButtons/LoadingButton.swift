@@ -15,6 +15,10 @@ open class LoadingButton: UIButton {
      Current loading state.
      */
     public var isLoading: Bool = false
+    
+    /// Material effect
+    public var isShowMaterial: Bool = false
+
     /**
      The flag that indicate if the shadow is added to prevent duplicate drawing.
      */
@@ -28,6 +32,7 @@ open class LoadingButton: UIButton {
      Set to true to add shadow to the button.
      */
     @IBInspectable open var withShadow: Bool = false
+    
     /**
      The corner radius of the button
      */
@@ -74,6 +79,7 @@ open class LoadingButton: UIButton {
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
+    
     /**
      Convenience init of theme button with required information
      
@@ -82,6 +88,7 @@ open class LoadingButton: UIButton {
      - Parameter textColor: the text color of the button.
      - Parameter textSize:  the text size of the button label.
      - Parameter bgColor:   the background color of the button, tint color will be automatically generated.
+     - Parameter isShowMaterial:  Material effect
      */
     public init(
         frame: CGRect = .zero,
@@ -91,7 +98,8 @@ open class LoadingButton: UIButton {
         font: UIFont? = nil,
         bgColor: UIColor = .black,
         cornerRadius: CGFloat = 12.0,
-        withShadow: Bool = false
+        withShadow: Bool = false,
+        isShowMaterial: Bool = false
     ) {
         super.init(frame: frame)
         // Set the icon of the button
@@ -113,7 +121,20 @@ open class LoadingButton: UIButton {
         self.setCornerBorder(cornerRadius: cornerRadius)
         self.withShadow = withShadow
         self.cornerRadius = cornerRadius
+        self.isShowMaterial = isShowMaterial
+        if isShowMaterial {
+            setupLayer()
+        }
     }
+    
+    private lazy var mkLayer: LoadingButtonLayer = LoadingButtonLayer(withView: self)
+
+    // MARK: Setup
+    private func setupLayer() {
+        mkLayer = LoadingButtonLayer(withView: self)
+        mkLayer.setRippleColor(color: .white)
+    }
+
     /**
      Convenience init of material design button using system default colors. This initializer
      reflects dark mode colors on iOS 13 or later platforms. However, it will ignore any custom
@@ -125,10 +146,16 @@ open class LoadingButton: UIButton {
      - Parameter cornerRadius: the corner radius of the button. It is set to 12.0 by default.
      - Parameter withShadow:   set true to show the shadow of the button.
      - Parameter buttonStyle:  specify the button style. Styles currently available are fill and outline.
+     - Parameter isShowMaterial:  Material effect
     */
     @available(iOS 13.0, tvOS 13.0, *)
-    public convenience init(icon: UIImage? = nil, text: String? = nil, font: UIFont? = nil,
-                            cornerRadius: CGFloat = 12.0, withShadow: Bool = false, buttonStyle: ButtonStyle) {
+    public convenience init(icon: UIImage? = nil, 
+                            text: String? = nil,
+                            font: UIFont? = nil,
+                            cornerRadius: CGFloat = 12.0,
+                            withShadow: Bool = false,
+                            buttonStyle: ButtonStyle,
+                            isShowMaterial: Bool = false) {
         switch buttonStyle {
         case .fill:
             #if os(tvOS)
@@ -136,11 +163,11 @@ open class LoadingButton: UIButton {
                       bgColor: .clear, cornerRadius: cornerRadius, withShadow: withShadow)
             #else
             self.init(icon: icon, text: text, textColor: .label, font: font,
-                      bgColor: .systemFill, cornerRadius: cornerRadius, withShadow: withShadow)
+                      bgColor: .systemFill, cornerRadius: cornerRadius, withShadow: withShadow, isShowMaterial: isShowMaterial)
             #endif
         case .outline:
             self.init(icon: icon, text: text, textColor: .label, font: font,
-                      bgColor: .clear, cornerRadius: cornerRadius, withShadow: withShadow)
+                      bgColor: .clear, cornerRadius: cornerRadius, withShadow: withShadow, isShowMaterial: isShowMaterial)
             self.setCornerBorder(color: .label, cornerRadius: cornerRadius)
         }
         self.indicator.color = .label
@@ -265,22 +292,38 @@ open class LoadingButton: UIButton {
     // touchesBegan
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        self.backgroundColor = self.bgColor == UIColor.clear ? .lightGray : self.bgColor.getColorTint()
+        if isShowMaterial {
+            mkLayer .touchesBegan(touches: touches, withEvent: event)
+        }else {
+            self.backgroundColor = self.bgColor == UIColor.clear ? .clear : self.bgColor.getColorTint()
+        }
     }
     // touchesEnded
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        self.backgroundColor = self.bgColor
+        if isShowMaterial {
+            mkLayer .touchesEnded(touches: touches, withEvent: event)
+        } else {
+            self.backgroundColor = self.bgColor
+        }
     }
     // touchesCancelled
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
-        self.backgroundColor = self.bgColor
+        if isShowMaterial {
+            mkLayer .touchesCancelled(touches: touches, withEvent: event)
+        } else {
+            self.backgroundColor = self.bgColor
+        }
     }
     // touchesMoved
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
-        self.backgroundColor = self.bgColor == UIColor.clear ? .lightGray : self.bgColor.getColorTint()
+        if isShowMaterial {
+            mkLayer .touchesMoved(touches: touches, withEvent: event)
+        } else {
+            self.backgroundColor = self.bgColor == UIColor.clear ? .lightGray : self.bgColor.getColorTint()
+        }
     }
 }
 // MARK: - UIActivityIndicatorView
