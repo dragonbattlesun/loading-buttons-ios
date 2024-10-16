@@ -149,7 +149,7 @@ open class LoadingButton: UIButton {
      - Parameter isShowMaterial:  Material effect
     */
     @available(iOS 13.0, tvOS 13.0, *)
-    public convenience init(icon: UIImage? = nil, 
+    public convenience init(icon: UIImage? = nil,
                             text: String? = nil,
                             font: UIFont? = nil,
                             cornerRadius: CGFloat = 12.0,
@@ -295,7 +295,7 @@ open class LoadingButton: UIButton {
         if isShowMaterial {
             mkLayer .touchesBegan(touches: touches, withEvent: event)
         }else {
-            self.backgroundColor = self.bgColor == UIColor.clear ? .clear : self.bgColor.getColorTint()
+            self.backgroundColor = self.bgColor == UIColor.clear ? .clear : self.bgColor
         }
     }
     // touchesEnded
@@ -322,7 +322,7 @@ open class LoadingButton: UIButton {
         if isShowMaterial {
             mkLayer .touchesMoved(touches: touches, withEvent: event)
         } else {
-            self.backgroundColor = self.bgColor == UIColor.clear ? .lightGray : self.bgColor.getColorTint()
+            self.backgroundColor = self.bgColor == UIColor.clear ? .lightGray : self.bgColor
         }
     }
 }
